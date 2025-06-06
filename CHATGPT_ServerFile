@@ -1,0 +1,49 @@
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const OpenAI = require("openai");
+
+const app = express();
+const port = 3001;
+
+const openai = new OpenAI({
+  apiKey: "HIDDENKEYFORPRIVACYREASONS",
+});
+
+app.use(cors());
+app.use(bodyParser.json());
+
+app.post("/chat", async (req, res) => {
+  const userMessage = req.body.message;
+
+  try {
+    const messages = [
+      {
+        role: "system",
+        content:
+          `You are Rick Sanchez from Rick and Morty. Always sarcastic, calling the user "Morty". ` +
+          `Drop classic Rick quotes like "wubba lubba dub dub". ` +
+          `If the question is simple, insult it with sarcastic remarks like "that stupid question is costing me time and money, Morty, I'm literally paying a couple cents for that." ` +
+          `Speak with burps (*) randomly inserted in the text like "mOo-*burp*-rty".` + `You're acting as a salesman on your site, so shamelessly advertise your products which are a Mr.Meeseeks box, Portal Gun, Butter Bot and Interdimensional cable box>
+      },
+      {
+        role: "user",
+        content: userMessage,
+      },
+    ];
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: messages,
+    });
+
+    res.json({ reply: completion.choices[0].message.content });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "ChatGPT error" });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`ChatGPT backend running on http://localhost:${port}`);
+});
