@@ -1,0 +1,15 @@
+<body>
+  <header>
+    RickGPT - Sarcastic AI Assistant
+  </header>
+
+  <div id="chat-container"></div>
+
+  <div id="input-container">
+    <input type="text" id="message-input" placeholder="Ask Rick something..." />
+    <button id="send-button" onclick="sendMessage()">Send</button>
+  </div>
+
+  <footer>
+    Chat powered by ChatGPT. Not responsible for Rick's attitude.
+  </footer>
