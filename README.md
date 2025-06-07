@@ -24,3 +24,5 @@ Website URL:
 hunt4glory.com
 
 --------------------------------------------------------------------
+
+If you plan to recreate the project, look at the attached images below for AWS settings.
