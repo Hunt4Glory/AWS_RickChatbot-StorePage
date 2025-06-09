@@ -16,10 +16,6 @@ The rick-bot is designed to be a very basic test to show that having that extra 
 
 --------------------------------------------------------------------
 
-No setup on the user's end is necessary, everything is managed server side.
-
---------------------------------------------------------------------
-
 Website URL:
 hunt4glory.com
 
